@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 引入database.properties文件中的值 -->
+	<properties resource="db.properties"/>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+
+	<!--给类取别名-->
+	<typeAliases>
+            <package name="com.briup.bean"/>
+	</typeAliases>
+
+	<!--配置自定义的类型处理器-->
+	<typeHandlers>
+
+	</typeHandlers>
+	<!--配置数据库环境-->
+	<environments default="development">
+
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.name}"/>
+				<property name="password" value="${jdbc.pwd}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+
+	<mappers>
+      <package name="com.briup.dao"/>
+	</mappers>
+
+</configuration>
